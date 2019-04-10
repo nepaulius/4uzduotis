@@ -1,0 +1,7 @@
+Pavardë     Vardas      ND1  ND2   ND3  ND4    Egzaminas 
+Zoro    RodrigezMguelisAlechandro        1   1      1   1         1   
+Bronasle     Vardas3        5   5      6   8         5
+Aiktusau    Vardas1        8    9     10   6       9
+Aaabatarke    Vardas2        7    10    8    5       6
+Bmxsas   Vardas4        4     5     8   9         8
+Nujaulabaiilgapavardegaunas Vardas6 4 7 8 9  3
