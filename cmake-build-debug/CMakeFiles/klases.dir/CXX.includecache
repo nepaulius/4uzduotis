@@ -6,23 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Adminas/CLionProjects/klases/Generacija.cpp
-galvininkas.h
-C:/Users/Adminas/CLionProjects/klases/galvininkas.h
-
 C:/Users/Adminas/CLionProjects/klases/Komandos-X.cpp
-galvininkas.h
-C:/Users/Adminas/CLionProjects/klases/galvininkas.h
-
-C:/Users/Adminas/CLionProjects/klases/NumerisDuStrategija.cpp
-galvininkas.h
-C:/Users/Adminas/CLionProjects/klases/galvininkas.h
-
-C:/Users/Adminas/CLionProjects/klases/NumerisVienasStrategija.cpp
-galvininkas.h
-C:/Users/Adminas/CLionProjects/klases/galvininkas.h
-
-C:/Users/Adminas/CLionProjects/klases/Proza.cpp
 galvininkas.h
 C:/Users/Adminas/CLionProjects/klases/galvininkas.h
 
@@ -65,12 +49,4 @@ deque
 -
 random
 -
-
-C:/Users/Adminas/CLionProjects/klases/kontrole.cpp
-galvininkas.h
-C:/Users/Adminas/CLionProjects/klases/galvininkas.h
-
-C:/Users/Adminas/CLionProjects/klases/main.cpp
-galvininkas.h
-C:/Users/Adminas/CLionProjects/klases/galvininkas.h
 

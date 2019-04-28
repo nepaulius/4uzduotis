@@ -89,6 +89,35 @@ public:
         Studentai::galutinismediana = galutinismediana;
     }
     bool operator() (Studentai i,Studentai j) { return (i.pavarde<j.pavarde);}
+
+   friend bool operator==(Studentai const a, Studentai const b){
+        return  (a.galutinismediana==b.galutinismediana&&a.vardas==b.vardas&&a.pavarde==b.pavarde);
+    }
+    friend  std::istream& operator>> (std::istream& in, Studentai& a)
+    {
+
+            std::cout<<"Iveskite pavarde ir varda studento, pagal kurio vidurki bus parodyti studentai turintys aukstesni vidurki :"<<std::endl;
+            std::cout<<"Iveskite pavarde : "<<std::endl;
+            in>>a.pavarde;
+            std::cout<<"Iveskite varda : "<<std::endl;
+            in>>a.vardas;
+
+            return in;
+    }
+    friend std::ostream & operator << (std::ostream &out, const Studentai &a)
+    {
+        out <<"Studento pavarde : "<< a.pavarde<<std::endl;
+        out <<"Studento vardas : "  << a.vardas << std::endl;
+        out <<"Studento galutinis vidurkio balas : "<<a.galutinis<<std::endl;
+        out<<std::endl;
+        return out;
+    }
+
+    friend bool operator > (Studentai const a, Studentai const b)
+    {
+        return a.galutinis>b.galutinis;
+    }
+
 };
 
 int PatikraSkaiciams();
@@ -120,6 +149,10 @@ std::string VidurkisArMediana();
 double Vidurkis(double laikinvid,int e);
 double Mediana(std::vector<int> balai,int namsk);
 std::string ValidacijaVidurkiuIrMedianai(std::string b);
+
+void Palyginimas(int a,std::vector<Studentai>vektstud);
+void StudentoIvedimas(int a,std::vector<Studentai>vektstud);
+
 
 
 

@@ -107,11 +107,56 @@ else if(p[0]=='V') {
         }
     }
 
+
+    Palyginimas(a,vektstud);
+    StudentoIvedimas(a,vektstud);
     IsvedimasEkranan(vardai2,pavardes2,vektstud);
 
 }
+void StudentoIvedimas(int a,std::vector<Studentai>vektstud)
+{
+    Studentai stud;
+
+
+
+    bool valid;
+    do {
+        std::cin >> stud;
+        for (int i = 0; i < a; i++) {
+            if (vektstud[i].getPavarde() == stud.getPavarde() && vektstud[i].getVardas() == stud.getVardas()) {
+
+                stud = vektstud[i];
+                valid = true;
+
+            }
+
+        }
+
+    }while(!valid);
+
+    for(int j=0;j<a;j++)
+    {
+        if(vektstud[j]>stud)
+        {
+            std::cout<<vektstud[j];
+        }
+    }
+
+}
+
+void Palyginimas(int a,std::vector<Studentai>vektstud) {
+    for (int i = 0; i < a; i++) {
+        for (int j = i + 1; j < a; j++)
+
+            if (vektstud[i] == vektstud[j]) {
+                std::cout <<"Studentas vardu : "<< vektstud[i].getVardas() << " ir pavarde : " << vektstud[j].getPavarde()<<" pasikartoja sarase" << std::endl;
+            }
+    }
+}
+
 void IsvedimasEkranan(std::vector<std::string> vardai2,std::vector<std::string> pavardes2,std::vector<Studentai>vektstud)
 {
+
     std::string klausimas=VidurkisArMediana();
 
     std::cout<<std::left<<std::setw(Ilgiausia(pavardes2)+10)<<"Pavarde ";
@@ -150,4 +195,5 @@ double Mediana(std::vector<int> balai,int namsk)
 
     return median;
 }
+
 
