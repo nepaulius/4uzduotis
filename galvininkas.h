@@ -22,12 +22,34 @@
 #include <deque>
 #include <random>
 
+class Zmogas{
+public:
+    void setVardas(std::string vardas2) {
+        vardas = vardas2;
+    }
+    void setPavarde(std::string pavarde2) {
+        pavarde = pavarde2;
+    }
+    const std::string &getVardas() const {
+        return vardas;
+    }
+    const std::string &getPavarde() const {
+        return pavarde;
+    }
 
+    virtual ~Zmogas(){
 
-class Studentai{
-private:
+    };
+
+    protected:
     std::string vardas;
     std::string pavarde;
+
+};
+
+class Studentai:public Zmogas{
+private:
+
     std::vector <int> balai;
     int testas;
     double galutinis;
@@ -39,25 +61,40 @@ public:
         galutinis=0;
         galutinismediana=0;
     }
+~Studentai()
+{
 
+};
+    Studentai(const  Studentai& y) {
+        vardas = y.vardas;
+        pavarde = y.pavarde;
+        testas = y.testas;
+        balai.reserve(y.balai.size());
+        for (int i = 0; i < balai.size(); i++) {
+            balai[i] = y.balai[i];
+        }
+        galutinis = y.galutinis;
+        galutinismediana = y.galutinismediana;
 
-    const std::string &getVardas() const {
-        return vardas;
     }
 
-    void setVardas(const std::string &vardas) {
-        Studentai::vardas = vardas;
-    }
 
-    const std::string &getPavarde() const {
-        return pavarde;
-    }
+    Studentai& operator=(const Studentai& y){
+            if(&y == this) return *this;
+            vardas = y.vardas;
+            pavarde = y.pavarde;
+            testas = y.testas;
+            galutinis=y.galutinis;
+            galutinismediana = y.galutinismediana;
+            balai=y.balai;
 
-    void setPavarde(const std::string &pavarde) {
-        Studentai::pavarde = pavarde;
-    }
+            return *this;
 
-    const std::vector<int> &getBalai() const {
+        }
+
+
+
+        const std::vector<int> &getBalai() const {
         return balai;
     }
 
@@ -93,15 +130,20 @@ public:
    friend bool operator==(Studentai const a, Studentai const b){
         return  (a.galutinismediana==b.galutinismediana&&a.vardas==b.vardas&&a.pavarde==b.pavarde);
     }
+    friend bool operator !=(Studentai const a, Studentai const b)
+    {
+        if(a.galutinis  != b.galutinis)
+        {
+            return a.galutinis!=b.galutinis;
+        }
+    }
     friend  std::istream& operator>> (std::istream& in, Studentai& a)
     {
-
             std::cout<<"Iveskite pavarde ir varda studento, pagal kurio vidurki bus parodyti studentai turintys aukstesni vidurki :"<<std::endl;
             std::cout<<"Iveskite pavarde : "<<std::endl;
             in>>a.pavarde;
             std::cout<<"Iveskite varda : "<<std::endl;
             in>>a.vardas;
-
             return in;
     }
     friend std::ostream & operator << (std::ostream &out, const Studentai &a)
@@ -152,6 +194,7 @@ std::string ValidacijaVidurkiuIrMedianai(std::string b);
 
 void Palyginimas(int a,std::vector<Studentai>vektstud);
 void StudentoIvedimas(int a,std::vector<Studentai>vektstud);
+void VidurkioPalyginimas(int a,std::vector<Studentai>vektstud);
 
 
 

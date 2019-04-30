@@ -110,9 +110,23 @@ else if(p[0]=='V') {
 
     Palyginimas(a,vektstud);
     StudentoIvedimas(a,vektstud);
+    VidurkioPalyginimas(a,vektstud);
     IsvedimasEkranan(vardai2,pavardes2,vektstud);
 
 }
+void VidurkioPalyginimas(int a,std::vector<Studentai>vektstud)
+{
+    Studentai stud;
+    for (int i = 0; i < a; i++) {
+        for (int j = i + 1; j < a; j++)
+
+            if (vektstud[i].getGalutinis() != vektstud[j].getGalutinis()) {
+                 std::cout <<"Studentas pavarde : " << vektstud[i].getPavarde()<<" turi skirtinga galutini bala nei pavarde: " <<vektstud[j].getPavarde()<< std::endl;
+            }
+
+    }
+}
+
 void StudentoIvedimas(int a,std::vector<Studentai>vektstud)
 {
     Studentai stud;
