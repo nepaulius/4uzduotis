@@ -38,4 +38,4 @@ ____
 Sukurta base klasė **Žmogas**, kurios derived klasė **Studentai**. Iš **Studentai** klasės perkėliau *string vardas,string pavardė, ir testo set funkciją* į **Žmogas** klasę.
 
 ![](https://user-images.githubusercontent.com/45967745/57059413-e64dfc00-6cbd-11e9-9ec5-00bb2a333050.png)
-![](https://user-images.githubusercontent.com/45967745/57060970-f537ad00-6cc3-11e9-9105-3451fb338748.png)
+![](https://user-images.githubusercontent.com/45967745/57061035-2fa14a00-6cc4-11e9-86cf-1908f4a980c2.png)
