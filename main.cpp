@@ -5,7 +5,6 @@
 
 int main()
 {
-
    // Strategas();
 
     std::string q;

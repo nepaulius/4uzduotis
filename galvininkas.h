@@ -37,9 +37,7 @@ public:
         return pavarde;
     }
 
-    virtual ~Zmogas(){
-
-    };
+    virtual void setTestas(int testas) = 0;
 
     protected:
     std::string vardas;
