@@ -38,6 +38,7 @@ public:
     }
 
     virtual void setTestas(int testas) = 0;
+    virtual ~Zmogas(){};
 
     protected:
     std::string vardas;
