@@ -130,7 +130,7 @@ std::string PatikraRaidems()
 
 }
 
-int Ilgiausia(std::vector<std::string>pavardes)
+int Ilgiausia(MyVector<std::string>pavardes)
 {
     std::string longest=pavardes[0];
     for(int i=0;i<pavardes.size();i++)

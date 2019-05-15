@@ -4,9 +4,9 @@
 void SkaitymasIsFailo() {
     int kartai = 0;
 
-    std::vector<Studentai> vektstud;
-    std::vector<std::string> Pavardes1;
-    std::vector<std::string> Vardai1;
+    MyVector<Studentai> vektstud;
+    MyVector<std::string> Pavardes1;
+    MyVector<std::string> Vardai1;
 
 
     Studentai stud;
@@ -27,7 +27,7 @@ void SkaitymasIsFailo() {
 
     std::string vardas;
     std::string pavarde;
-    std::vector<int> balai;
+    MyVector<int> balai;
     int egzaminas;
     double galutinis;
     double galutinismediana;
@@ -86,4 +86,5 @@ void SkaitymasIsFailo() {
         std::cout<<std::left<<std::setw(20)<<vektstud[i].getGalutinismediana()<<std::endl;
 
     }
+
 }

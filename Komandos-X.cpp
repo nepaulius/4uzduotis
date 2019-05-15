@@ -2,7 +2,7 @@
 
 void DuomenuPateikimas()
 {
-    std::vector<Studentai> vektstud;
+    MyVector<Studentai> vektstud;
     Studentai stud;
 
     int a=PatikraSkaiciams();
@@ -14,8 +14,8 @@ void DuomenuPateikimas()
 
 
 
-    std::vector<std::string> vardai2;
-    std::vector<std::string> pavardes2;
+    MyVector<std::string> vardai2;
+    MyVector<std::string> pavardes2;
 
 
     for(int i=0;i<a; i++)
@@ -25,7 +25,8 @@ void DuomenuPateikimas()
         std::cin.sync();
         vardas=PatikraRaidems();
         stud.setVardas(vardas);
-        vardai2.push_back(stud.getVardas());
+        std::string tempVard=stud.getVardas();
+        vardai2.push_back(tempVard);
 
 
         std::string pavarde;
@@ -41,7 +42,7 @@ void DuomenuPateikimas()
         std::string p=ValidacijaVidurkiuIrMedianai(f);
 
         double laikinvid=0;
-        std::vector<int>balai;
+        MyVector<int>balai;
 
         if(p[0]=='M')
         {
@@ -114,7 +115,7 @@ else if(p[0]=='V') {
     IsvedimasEkranan(vardai2,pavardes2,vektstud);
 
 }
-void VidurkioPalyginimas(int a,std::vector<Studentai>vektstud)
+void VidurkioPalyginimas(int a,MyVector<Studentai>vektstud)
 {
     Studentai stud;
     for (int i = 0; i < a; i++) {
@@ -127,7 +128,7 @@ void VidurkioPalyginimas(int a,std::vector<Studentai>vektstud)
     }
 }
 
-void StudentoIvedimas(int a,std::vector<Studentai>vektstud)
+void StudentoIvedimas(int a,MyVector<Studentai>vektstud)
 {
     Studentai stud;
 
@@ -158,7 +159,7 @@ void StudentoIvedimas(int a,std::vector<Studentai>vektstud)
 
 }
 
-void Palyginimas(int a,std::vector<Studentai>vektstud) {
+void Palyginimas(int a,MyVector<Studentai>vektstud) {
     for (int i = 0; i < a; i++) {
         for (int j = i + 1; j < a; j++)
 
@@ -168,7 +169,7 @@ void Palyginimas(int a,std::vector<Studentai>vektstud) {
     }
 }
 
-void IsvedimasEkranan(std::vector<std::string> vardai2,std::vector<std::string> pavardes2,std::vector<Studentai>vektstud)
+void IsvedimasEkranan(MyVector<std::string> vardai2,MyVector<std::string> pavardes2,MyVector<Studentai>vektstud)
 {
 
     std::string klausimas=VidurkisArMediana();
@@ -200,12 +201,14 @@ double Vidurkis(double laikinvid,int e)
     double vidurkis = laikinvid/e;
     return vidurkis;
 }
-double Mediana(std::vector<int> balai,int namsk)
+double Mediana(MyVector<int> balai,int namsk)
 {
     double median;
     std::sort(balai.begin(), balai.end());
-    if( namsk%2==0 || namsk==2  )  median=(double)(balai[balai.size()/2]+balai[balai.size()/2-1])/2;
+
+    if( namsk%2==0 || namsk==2  )  median=(double)(balai[balai.size()/2+1]+balai[balai.size()/2])/2;
     else median=balai[balai.size()/2];
+
 
     return median;
 }

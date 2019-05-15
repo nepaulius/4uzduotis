@@ -18,7 +18,7 @@ void MakeData(int k,std::string r)
 
     Studentai gimt;
 
-    std::vector<Studentai> vektstud;
+    MyVector<Studentai> vektstud;
     std::list<Studentai> liststud;
     std::list<Studentai>::iterator it;
     std::deque<Studentai> dekasstud;
@@ -49,7 +49,7 @@ void MakeData(int k,std::string r)
     generator.seed(std::time(0));
     std::uniform_int_distribution<uint64_t> dice(1,10);
 
-    std::vector<int> balai;
+    MyVector<int> balai;
 
     for(int i=0;i<std::round(pow(10,k));i++)
     {
@@ -98,14 +98,10 @@ void MakeData(int k,std::string r)
 
     if(r[0]=='V') {
       PadalijimasVektorius(vektstud, k);
-      PadalijimasListas(liststud, k);
-      PadalijimasDekas(dekasstud, k);
+
     }
     else if(r[0]=='M') {
-    // DuPadalijimasVektorius(vektstud, k);
-    // DuPadalijimasListas(liststud, k);
-      DuPadalijimasDekas(dekasstud, k);
-
+   DuPadalijimasVektorius(vektstud, k);
 
     }
 
@@ -114,7 +110,7 @@ void MakeData(int k,std::string r)
     {
         fr<<std::left<<std::setw(15)<<vektstud[i].getPavarde()<<std::setw(30)<<std::left<<vektstud[i].getVardas();
 
-        std::vector<int> pazymys;
+        MyVector<int> pazymys;
         pazymys=vektstud[i].getBalai();
             for ( int j=0; j<50; j++)
             {
