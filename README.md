@@ -1,42 +1,108 @@
-# 3 užduotis
+# 4uzduotis
 
-* **v1.1**
-Pasirinkau deque tipo konteinerį, nes geriausiai matosi laiko skirtumai.
+**1 dalis**
 
-Naudojant deque tipo konteinerį su Studentas klase:
+5 funkcijos MyVector klasėje:
 
-![](https://user-images.githubusercontent.com/45967745/55881503-74493200-5bab-11e9-811a-4f40fcd8618a.JPG)
+1)**.pop_back()**-ištrina paskutinį elementą vektoriuje.
+```cpp
+template<class T>
+void MyVector<T>::pop_back() {
+    if (vektsize > 0)
+        vektsize--;
+}
+```
+2)**.swap()**- apkeičia vektorių elementus vietomis.
+```cpp
+template<class T>
+void MyVector<T>::swap(MyVector &other) {
+    int tempVektsize, tempVektcapa;
+    T *tempPoint;
 
-Skirtumai tarp *Studentas* struktūros ir klasės:
+    tempPoint = other.point;
+    tempVektsize = other.vektsize;
+    tempVektcapa = other.vektcapa;
 
-**Tipas /Studentų skaičius**|10 000|100 000
-|---|:---:|---|
-**Rūšiavimo laikas (sekundėmis)** - tipas *deque* - **Studentas struktūra**|2,132|208,309|
-**Rūšiavimo laikas (sekundėmis)** - tipas *deque* - **Studentas klasė**|2,202|205,962|
+    other.point = point;
+    other.vektsize = vektsize;
+    other.vektcapa = vektcapa;
 
+    vektsize = tempVektsize;
+    vektcapa = tempVektcapa;
+    point = tempPoint;
+}
+```
+3)**.front()** - iškviečia vektoriaus pirmąjį elementą.
+```cpp
+template<class T>
+T &MyVector<T>::front() {
+    if (vektsize > 0)
+        return point[0];
+    else
+        throw std::logic_error("Empty container");
+}
+```
+4)**.clear()** - ištrina elementus esančius vektoriuje.
+```cpp
+template<class T>
+void  MyVector<T>::clear()
+{
+    if(point!=NULL)
+       {
+          delete[] point;
+          vektsize=0;
+          vektcapa=0;
 
-Programos veikimas naudojant skirtingus kompiliatoriaus optimizavimo lygius:
+       }
 
-![](https://user-images.githubusercontent.com/45967745/55881733-e4f04e80-5bab-11e9-8852-38fcd51012f3.JPG)
-![](https://user-images.githubusercontent.com/45967745/55881734-e588e500-5bab-11e9-92cf-cc9eb4fcea8e.JPG)
-![](https://user-images.githubusercontent.com/45967745/55881738-e752a880-5bab-11e9-8b82-ede2a9f64e05.JPG)
-
-**Tipas /Studentų skaičius**|10 000|100 000
-|---|:---:|---|
-**Rūšiavimo laikas (sekundėmis)**- Studentas klasė (**be optimizavo flag'o**) | 1,656|202,048|
-**Rūšiavimo laikas (sekundėmis)**- Studentas klasė (**optimizavo flag'as - O1**) | 0,321|38,58|
-**Rūšiavimo laikas (sekundėmis)**- Studentas klasė (**optimizavo flag'as - O2**) | 0,304|33,54|
-**Rūšiavimo laikas (sekundėmis)**- Studentas klasė (**optimizavo flag'as - O3**) | 0,237|36,658|
-
+}
+```
+5)**.back()** - iškviečia elementą, esantį vektoriaus pabaigoje.
+```cpp
+template<class T>
+T &MyVector<T>::back() {
+    if (vektsize > 0)
+        return point[vektsize-1];
+    else
+        throw std::logic_error("Empty container");
+}
+```
 ___
-* **v1.2**
-Sukurti operatoriai : 
+**2 dalis**
 
-![](https://user-images.githubusercontent.com/45967745/56970723-6fefb380-6b70-11e9-8917-8e0876a25030.png)
-____
-* **v1.5**
-Sukurta base klasė **Žmogas**, kurios derived klasė **Studentai**. Iš **Studentai** klasės perkėliau *string vardas,string pavardė, ir testo set funkciją* į **Žmogas** klasę.
+Pushback funkcijos testavimas laiko atžvilgiu su paprastu ir sukurto vektoriumi:
 
-![](https://user-images.githubusercontent.com/45967745/57059413-e64dfc00-6cbd-11e9-9ec5-00bb2a333050.png)
-![](https://user-images.githubusercontent.com/45967745/57061035-2fa14a00-6cc4-11e9-86cf-1908f4a980c2.png)
-![](https://user-images.githubusercontent.com/45967745/57061080-52cbf980-6cc4-11e9-8f3c-ab7072ab0337.png)
+![](https://user-images.githubusercontent.com/45967745/57319486-5963d200-7105-11e9-91cb-38efc0045c39.JPG)
+![](https://user-images.githubusercontent.com/45967745/57319487-5963d200-7105-11e9-8fee-44f6a1fc2f4f.JPG)
+![](https://user-images.githubusercontent.com/45967745/57319482-58cb3b80-7105-11e9-976a-38a57aae6453.JPG)
+![](https://user-images.githubusercontent.com/45967745/57319483-5963d200-7105-11e9-83ef-afc2a0095e80.JPG)
+![](https://user-images.githubusercontent.com/45967745/57319485-5963d200-7105-11e9-8853-416ad5959abd.JPG)
+
+|  Vektoriaus tipas \ Dydis  | 10 000  |100 000   |1 000 000   |10 000 000  |100 000 000|
+|---|---|---|---|---|---|
+|**Paprastas vektorius** - (laikas s) |0,00099   |0,002   | 0,025   | 0,27  |2,45  |
+|**Sukurtas vektorius** - (laikas s)|0 |  0,001  |0,12 | 0,16  |1,43|
+___
+**3 dalis**
+
+Sukurto ir paprasto vektoriaus perskirstymo dažnis 100 000 000
+```cpp
+for(int i=0;i<sz;i++)
+{
+    v1.push_back(i);
+    if(v1.capacity()==v1.size())
+         perskirstymasPap++;
+}
+```
+```cpp
+for (int i =0; i <sz; ++i){
+v2.push_back(i);
+if(v2.capacity()==v2.size())
+    perskirstymasSuk++;
+}
+```
+```cpp
+std::cout<<"Paprastas vektorius "<<sz<<" perskirsto : "<<perskirstymasPap <<" kartus"<<std::endl;
+std::cout<<"Sukurtas vektorius "<<sz<< " perskirsto : "<<perskirstymasSuk <<" kartus"<<std::endl;
+```
+![](https://user-images.githubusercontent.com/45967745/57320818-78179800-7108-11e9-9883-f062f89d7fef.png)
