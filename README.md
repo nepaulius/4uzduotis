@@ -107,7 +107,7 @@ std::cout<<"Sukurtas vektorius "<<sz<< " perskirsto : "<<perskirstymasSuk <<" ka
 ```
 ![](https://user-images.githubusercontent.com/45967745/57320818-78179800-7108-11e9-9883-f062f89d7fef.png)
 
-__
+___
 std::vector ir MyVector palyginimas : 
 
 |*Studentų skaičius*|100 000|
